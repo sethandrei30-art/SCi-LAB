@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SciLab Equipment Profile</title>
+  <!-- Library for generating scannable QR codes -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7f6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #1e3d59;
+      color: #ffffff;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      margin: 0 0 8px 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      background-color: #eee;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .card-body {
+      padding: 25px;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #e8ecef;
+      color: #1e3d59;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+    }
+
+    .product-title {
+      margin: 0 0 8px 0;
+      font-size: 1.8rem;
+      color: #1e3d59;
+    }
+
+    .product-meta {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .product-description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 25px;
+    }
+
+    .qr-section {
+      background-color: #f9fbfd;
+      border: 2px dashed #b0c4de;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .qr-section p {
+      margin: 0;
+      font-weight: bold;
+      color: #1e3d59;
+      font-size: 0.9rem;
+    }
+
+    #qrcode {
+      padding: 6px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .qr-link-text {
+      font-size: 0.8rem;
+      color: #0066cc;
+      word-break: break-all;
+      text-decoration: none;
+    }
+
+    .qr-link-text:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🧪 Science Laboratory Equipment Profile</h1>
+    <p>Scan the QR code with any device to view equipment specifications online.</p>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <img src="https://i.postimg.cc/j58K52tj/Screenshot-2026-11-11-074631.png">
+      <div class="card-body">
+        <span class="badge">Equipment</span>
+        <h2 class="product-title">Compound Light Microscope</h2>
+        <div class="product-meta"><strong>Quantity Available:</strong> 8 units &bull; <strong>ID:</strong> LAB-EQ-001</div>
+        <p class="product-description">
+          Binocular optical microscope featuring 4x, 10x, and 40x objective lenses. Designed for accurate biological observation, cellular slide analysis, and high-precision school laboratory experiments.
+        </p>
+
+        <div class="qr-section">
+          <p>📱 Scan with Phone Camera to Access Online Info</p>
+          <div id="qrcode"></div>
+          <a id="page-link" href="#" target="_blank" class="qr-link-text"></a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentUrl = window.location.href;
+      document.getElementById('page-link').href = currentUrl;
+      document.getElementById('page-link').textContent = currentUrl;
+
+      // Generate scannable QR code for the page URL
+      new QRCode(document.getElementById("qrcode"), {
+        text: currentUrl,
+        width: 110,
+        height: 110,
+        colorDark: "#1e3d59",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    });
+  </script>
+</body>
+</html>
